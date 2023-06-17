@@ -11,7 +11,7 @@ baker.get('/', (req, res) => {
         .then(foundBakers => {
             res.send(foundBakers)
         })
-})                    
+})
 // Show: 
 baker.get('/:id', (req, res) => {
     Baker.findById(req.params.id)
