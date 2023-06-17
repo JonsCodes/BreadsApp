@@ -12,10 +12,14 @@ baker.get('/', (req, res) => {
             res.send(foundBakers)
         })
 })
-// Show: 
+
+// show 
 baker.get('/:id', (req, res) => {
     Baker.findById(req.params.id)
-        .populate('breads')
+        .populate({
+            path: 'breads',
+            options: { limit: 2 }
+        })
         .then(foundBaker => {
             res.render('bakerShow', {
                 baker: foundBaker
@@ -23,9 +27,20 @@ baker.get('/:id', (req, res) => {
         })
 })
 
+
+// delete
+baker.delete('/:id', (req, res) => {
+    Baker.findByIdAndDelete(req.params.id)
+        .then(deletedBaker => {
+            res.status(303).redirect('/breads')
+        })
+})
+
+
+// Seed
 baker.get('/data/seed', (req, res) => {
     Baker.insertMany(bakerSeedData)
         .then(res.redirect('/breads'))
 })
-// export
+
 module.exports = baker                    
