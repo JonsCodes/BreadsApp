@@ -7,3 +7,21 @@ img {
   display: block;
   margin: auto;
 }
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.baker-details {
+  flex-basis: 50%;
+}
+
+.baker-breads {
+  flex-basis: 50%;
+}
+
+.show-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
