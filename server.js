@@ -2,8 +2,7 @@ const express = require('express')
 const app = express()
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
-
-//configuration 
+// CONFIGURATION
 require('dotenv').config()
 
 //ROUTES
@@ -29,10 +28,9 @@ const bakersController = require('./controllers/bakers_controllers.js')
 app.use('/bakers', bakersController)
 
 const PORT = process.env.PORT || 3003
-mongoose.connect(process.env.MONGO_URI,
-    { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-        console.log('connected to mongoDB: ', process.env.MONGO_URI)
-    })
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true},
+    () => {console.log('connected to : ', process.env.MONGO_URI)}
+    )
 
 // 404 Page
 app.get('*', (req, res) => {
